@@ -14,14 +14,15 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.io.stream.StreamOutput;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContent;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,6 +79,28 @@ public class ContentService {
         // 解析结果
         for (SearchHit documentFields : searchResponse.getHits().getHits()) {
             list.add(documentFields.getSourceAsMap());
+        }
+        return list;
+    }
+    public List<Map<String,Object>> searchPageSortOfPrice(String keyword,int pageNo,int pageSize) throws IOException {
+        if(pageNo <= 1) {
+            pageNo = 1;
+        }
+        SearchRequest searchRequest = new SearchRequest("jd_goods");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        searchSourceBuilder.from(pageNo);
+        searchSourceBuilder.size(pageSize);
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("title",keyword);
+        searchSourceBuilder.query(termQueryBuilder);
+        searchSourceBuilder.timeout(new TimeValue(60,TimeUnit.SECONDS));
+        searchSourceBuilder.sort(new FieldSortBuilder("price.keyword").order(SortOrder.DESC));
+
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+        ArrayList<Map<String,Object>> list = new ArrayList<>();
+        for (SearchHit element : searchResponse.getHits().getHits()) {
+            list.add(element.getSourceAsMap());
         }
         return list;
     }

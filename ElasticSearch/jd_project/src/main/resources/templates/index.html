@@ -75,11 +75,11 @@
 
                 <!-- 排序规则 -->
                 <div class="filter clearfix">
-                    <a class="fSort fSort-cur">综合<i class="f-ico-arrow-d"></i></a>
-                    <a class="fSort">人气<i class="f-ico-arrow-d"></i></a>
-                    <a class="fSort">新品<i class="f-ico-arrow-d"></i></a>
-                    <a class="fSort">销量<i class="f-ico-arrow-d"></i></a>
-                    <a class="fSort">价格<i class="f-ico-triangle-mt"></i><i class="f-ico-triangle-mb"></i></a>
+                    <a class="fSort fSort-cur" id="zh" @click.prevent="zhButton">综合<i class="f-ico-arrow-d"></i></a>
+                    <a class="fSort" id = 'rq' @click.prevent="rqButton">人气<i class="f-ico-arrow-d"></i></a>
+                    <a class="fSort" id = 'xp' @click.prevent="xpButton">新品<i class="f-ico-arrow-d"></i></a>
+                    <a class="fSort" id = 'xl' @click.prevent="xlButton">销量<i class="f-ico-arrow-d"></i></a>
+                    <a class="fSort" id = 'jg' @click.prevent="sortKeywordByPrice">价格<i class="f-ico-triangle-mt"></i><i class="f-ico-triangle-mb"></i></a>
                 </div>
 
                 <!-- 商品详情 -->
@@ -135,6 +135,52 @@
                     console.log(response.data);
                     this.results = response.data; // 绑定数据
                 })
+            },
+            sortKeywordByPrice(){
+                let keyword = this.keyword;
+                console.log(keyword);
+                axios.get('sort/'+keyword+'/1/20').then(response=>{
+                    console.log(response.data);
+                    this.results = response.data;
+                    document.getElementById('zh').className = "fSort";
+                    document.getElementById('rq').className = "fSort";
+                    document.getElementById('xl').className = "fSort";
+                    document.getElementById('xp').className = "fSort";
+                    document.getElementById('jg').className = "fSort fSort-cur";
+                })
+            },
+            zhButton(){
+                document.getElementById('zh').className = "fSort fSort-cur";
+                document.getElementById('rq').className = "fSort";
+                document.getElementById('xl').className = "fSort";
+                document.getElementById('xp').className = "fSort";
+                document.getElementById('jg').className = "fSort";
+                let keyword = this.keyword;
+                axios.get('search/'+keyword+"/1/20").then(response=>{
+                    console.log(response.data);
+                    this.results = response.data; // 绑定数据
+                })
+            },
+            rqButton(){
+                document.getElementById('zh').className = "fSort";
+                document.getElementById('rq').className = "fSort fSort-cur";
+                document.getElementById('xl').className = "fSort";
+                document.getElementById('xp').className = "fSort";
+                document.getElementById('jg').className = "fSort";
+            },
+            xlButton(){
+                document.getElementById('zh').className = "fSort";
+                document.getElementById('rq').className = "fSort";
+                document.getElementById('xl').className = "fSort fSort-cur";
+                document.getElementById('xp').className = "fSort";
+                document.getElementById('jg').className = "fSort";
+            },
+            xpButton(){
+                document.getElementById('zh').className = "fSort";
+                document.getElementById('rq').className = "fSort";
+                document.getElementById('xl').className = "fSort";
+                document.getElementById('xp').className = "fSort fSort-cur";
+                document.getElementById('jg').className = "fSort";
             }
         }
     })

@@ -29,4 +29,11 @@ public class ContentController {
                                            @PathVariable("pageSize") int pageSize) throws IOException {
         return contentService.searchPage(keyword,pageNo,pageSize);
     }
+
+    @GetMapping("/sort/{keyword}/{pageNo}/{pageSize}")
+    public List<Map<String,Object>> searchSort(@PathVariable("keyword") String keyword,
+                                           @PathVariable("pageNo") int pageNo,
+                                           @PathVariable("pageSize") int pageSize) throws IOException {
+        return contentService.searchPageSortOfPrice(keyword,pageNo,pageSize);
+    }
 }
