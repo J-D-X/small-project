@@ -26,7 +26,7 @@ public class ContentController {
     @GetMapping("/search/{keyword}/{pageNo}/{pageSize}")
     public List<Map<String,Object>> search(@PathVariable("keyword") String keyword,
                                            @PathVariable("pageNo") int pageNo,
-                                           @PathVariable("pageSize") int pageSize) throws IOException {
+                                           @PathVariable("pageSize") int pageSize) throws Exception {
         return contentService.searchPage(keyword,pageNo,pageSize);
     }
 

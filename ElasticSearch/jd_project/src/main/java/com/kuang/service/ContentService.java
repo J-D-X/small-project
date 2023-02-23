@@ -48,20 +48,20 @@ public class ContentService {
         bulkRequest.timeout("2s");
         for (int i = 0; i < contents.size(); i++) {
             bulkRequest.add(
-                    new IndexRequest("jd_goods")
+                    new IndexRequest("jd_goods2")
                     .source(JSON.toJSONString(contents.get(i)), XContentType.JSON));
         }
         BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
         return !bulkResponse.hasFailures();
     }
 
-    public List<Map<String,Object>> searchPage(String keyword, int pageNo, int pageSize) throws IOException {
+    public List<Map<String,Object>> searchPage(String keyword, int pageNo, int pageSize) throws Exception {
         if(pageNo <= 1){
             pageNo = 1;
         }
 
         //构造请求
-        SearchRequest searchRequest = new SearchRequest("jd_goods");
+        SearchRequest searchRequest = new SearchRequest("jd_goods2");
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
         // 构造分页
@@ -80,13 +80,17 @@ public class ContentService {
         for (SearchHit documentFields : searchResponse.getHits().getHits()) {
             list.add(documentFields.getSourceAsMap());
         }
+        if(list.size() == 0) {
+            parseContent(keyword);
+            searchPage(keyword, pageNo, pageSize);
+        }
         return list;
     }
     public List<Map<String,Object>> searchPageSortOfPrice(String keyword,int pageNo,int pageSize) throws IOException {
         if(pageNo <= 1) {
             pageNo = 1;
         }
-        SearchRequest searchRequest = new SearchRequest("jd_goods");
+        SearchRequest searchRequest = new SearchRequest("jd_goods2");
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
         searchSourceBuilder.from(pageNo);
@@ -94,7 +98,7 @@ public class ContentService {
         TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("title",keyword);
         searchSourceBuilder.query(termQueryBuilder);
         searchSourceBuilder.timeout(new TimeValue(60,TimeUnit.SECONDS));
-        searchSourceBuilder.sort(new FieldSortBuilder("price.keyword").order(SortOrder.DESC));
+        searchSourceBuilder.sort(new FieldSortBuilder("price").order(SortOrder.DESC));
 
         searchRequest.source(searchSourceBuilder);
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);

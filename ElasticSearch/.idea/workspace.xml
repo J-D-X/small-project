@@ -7,7 +7,9 @@
     <list default="true" id="414bc2cf-960e-4925-8538-d42364856836" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/controller/ContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/controller/ContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/pojo/Content.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/pojo/Content.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/service/ContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/service/ContentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/utils/HtmlParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/utils/HtmlParseUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_project/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +112,7 @@
       <workItem from="1676988113063" duration="1789000" />
       <workItem from="1677027164480" duration="3923000" />
       <workItem from="1677073038873" duration="3210000" />
+      <workItem from="1677113543046" duration="1665000" />
     </task>
     <servers />
   </component>

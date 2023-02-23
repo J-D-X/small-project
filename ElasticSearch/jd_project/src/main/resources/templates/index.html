@@ -34,7 +34,7 @@
                                                        class="s-combobox-input" aria-haspopup="true">
                                             </div>
                                         </div>
-                                        <button type="submit" @click.prevent="searchKey" id="searchbtn">搜索</button>
+                                        <button type="submit" @click.prevent="zhButton" id="searchbtn">搜索</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -95,7 +95,8 @@
                             </div>
                             <!--价格-->
                             <p class="productPrice">
-                                <em>{{result.price}}</em>
+                                <em>￥ {{result.price}}</em>
+
                             </p>
                             <!--标题-->
                             <p class="productTitle">

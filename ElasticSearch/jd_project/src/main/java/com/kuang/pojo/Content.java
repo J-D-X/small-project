@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Content {
     private String title;
-    private String price;
+    private double price;
     private String img;
-//    private String commit;
     private String shop;
 }

@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class HtmlParseUtil {
     public static void main(String[] args) throws Exception {
-        new HtmlParseUtil().parseJD("vue").forEach(System.out::println);
+        new HtmlParseUtil().parseJD("rust").forEach(System.out::println);
     }
     public List<Content> parseJD(String keywords) throws Exception {
         //        url:https://search.jd.com/Search?keyword=java
@@ -35,7 +35,9 @@ public class HtmlParseUtil {
         for (Element el:elements) {
 
             String img = el.getElementsByTag("img").eq(0).attr("data-lazy-img");
-            String price = el.getElementsByClass("p-price").eq(0).text();
+            String p = el.getElementsByClass("p-price").eq(0).text();
+            if(p.length() < 1) continue;
+            double price = Double.parseDouble(p.substring(1,6));
             String name = el.getElementsByClass("p-name").eq(0).text();
             String shop = el.getElementsByClass("curr-shop hd-shopname").eq(0).text();
             System.out.println("=========================================================");
@@ -44,7 +46,7 @@ public class HtmlParseUtil {
             System.out.println(name);
             System.out.println(shop);
 
-            Content content = new Content(name, price, img,shop);
+            Content content = new Content(name, price, img, shop);
             list.add(content);
         }
         return list;
