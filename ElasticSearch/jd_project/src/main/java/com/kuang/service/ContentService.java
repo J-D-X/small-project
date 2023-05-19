@@ -100,6 +100,7 @@ public class ContentService {
         searchSourceBuilder.timeout(new TimeValue(60,TimeUnit.SECONDS));
         searchSourceBuilder.sort(new FieldSortBuilder("price").order(SortOrder.DESC));
 
+
         searchRequest.source(searchSourceBuilder);
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
         ArrayList<Map<String,Object>> list = new ArrayList<>();

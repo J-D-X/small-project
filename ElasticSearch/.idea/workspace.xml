@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="414bc2cf-960e-4925-8538-d42364856836" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/controller/ContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/controller/ContentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/pojo/Content.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/pojo/Content.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/service/ContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/service/ContentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/utils/HtmlParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/java/com/kuang/utils/HtmlParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_project/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/jd_project/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +57,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../研究生/研二/项目/兴唐/code/nuoyi" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -113,6 +110,12 @@
       <workItem from="1677027164480" duration="3923000" />
       <workItem from="1677073038873" duration="3210000" />
       <workItem from="1677113543046" duration="1665000" />
+      <workItem from="1677115934211" duration="1905000" />
+      <workItem from="1683872706527" duration="203000" />
+      <workItem from="1684140847594" duration="2005000" />
+      <workItem from="1684146311831" duration="2988000" />
+      <workItem from="1684196903621" duration="655000" />
+      <workItem from="1684218156974" duration="722000" />
     </task>
     <servers />
   </component>
