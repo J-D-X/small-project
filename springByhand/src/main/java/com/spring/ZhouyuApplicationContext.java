@@ -26,6 +26,7 @@ public class ZhouyuApplicationContext {
 
         for (String beanName : beanDefinitionMap.keySet()) {
             BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+            System.out.println(beanName);
             if (beanDefinition.getScope().equals("singleton")) {
                 Object bean = createBean(beanName, beanDefinition);
                 singletonObjects.put(beanName, bean);
@@ -151,6 +152,9 @@ public class ZhouyuApplicationContext {
         if (beanDefinitionMap.containsKey(beanName)) {
             BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
             if (beanDefinition.getScope().equals("singleton")) {
+                if(!singletonObjects.containsKey(beanName)){
+                    System.out.println("找不到这个bean：" + beanName);
+                }
                 Object o = singletonObjects.get(beanName);
                 return o;
             } else {
